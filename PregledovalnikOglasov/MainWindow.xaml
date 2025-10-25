@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PregledovalnikOglasov"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="{StaticResource AppBgBrush}">
 
     <!-- meni -->
     <DockPanel>
@@ -35,7 +36,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- ISKANJE -->
+            <!-- SEARCH -->
             <Grid Grid.Row="0" Grid.Column="2" Margin="0,10,10,6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -53,7 +54,6 @@
                     <TextBlock Text="Išči po oglasih (npr. znamka, model, letnik)"
                                VerticalAlignment="Center"
                                Margin="6,0,8,0"
-                               Foreground="Gray"
                                IsHitTestVisible="False">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
@@ -83,17 +83,14 @@
             </Grid>
 
             <!-- FILTER -->
-            <Border Grid.Row="1" Grid.Column="0" Margin="10" Padding="12" 
-                    BorderBrush="#DDD" BorderThickness="1" CornerRadius="8">
+            <Border Grid.Row="1" Grid.Column="0" Margin="10"
+                Style="{StaticResource Card}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="PanelFiltri" Orientation="Vertical" HorizontalAlignment="Left">
-                        <StackPanel.Resources>
-                            <Style TargetType="FrameworkElement">
-                                <Setter Property="Margin" Value="0,0,0,10"/>
-                            </Style>
-                        </StackPanel.Resources>
+                       
 
-                        <TextBlock Text="Filtri" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                        <TextBlock Text="Filtri" Style="{StaticResource SectionTitle}"/>
+
 
                         <!-- Primer filtra: Znamka -->
                         <StackPanel>
@@ -148,7 +145,7 @@
                         <Separator/>
 
                         <!-- Filtriraj button -->
-                        <Button Height="32" Click="BtnFiltriraj_Click">
+                        <Button Height="32" Click="BtnFiltriraj_Click" Style="{StaticResource MainButton}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Image Width="16" Height="16" Margin="0,0,6,0"
                                        Source="https://cdn1.iconfinder.com/data/icons/ionicons-sharp-vol-1/512/filter-sharp-256.png"/>
@@ -157,7 +154,7 @@
                         </Button>
 
                         <!-- Ponastavi button -->
-                        <Button Height="32" Margin="0,4,0,0" Click="BtnPonastavi_Click">
+                        <Button Height="32" Margin="0,4,0,0" Click="BtnPonastavi_Click" Style="{StaticResource DangerButton}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Image Width="16" Height="16" Margin="0,0,6,0"
                                        Source="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/reset--alt-256.png"/>
@@ -170,21 +167,21 @@
 
             <GridSplitter Grid.Column="1" Grid.Row="1" Width="5" 
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                          Background="#EEE" ResizeDirection="Columns" />
+                          ResizeDirection="Columns" />
 
             <!-- DESNI SEZNAM-->
             <Grid Grid.Column="2" Grid.Row="1" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <!-- List - podrobnosti -->
                     <ColumnDefinition Width="12"/>
                     
                     <ColumnDefinition Width="420"/>
-                    <!-- podrobnosti izbranega -->
+
                 </Grid.ColumnDefinitions>
 
-                <!-- Seznam oglasov -->
-                <Border Grid.Column="0" Padding="0" BorderBrush="#DDD" BorderThickness="1" CornerRadius="8">
+                
+                <Border Grid.Column="0" Style="{StaticResource Card}" Padding="0">
+
                     <ListView x:Name="lvOglasi" 
                               MouseDoubleClick="lvOglasi_MouseDoubleClick"
                               SelectionChanged="lvOglasi_SelectionChanged">
@@ -198,7 +195,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="{Binding Naziv}" FontWeight="SemiBold" Grid.Column="0"/>
-                                        <TextBlock Text="{Binding CenaString}" Foreground="Gray" Grid.Column="1" Margin="12,0,0,0"/>
+                                        <TextBlock Text="{Binding CenaString}" Style="{StaticResource MutedText}" Foreground="Gray" Grid.Column="1" Margin="12,0,0,0"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -210,16 +207,10 @@
                 <Rectangle Grid.Column="1" Width="12" Fill="Transparent"/>
 
                 <!-- Podrobnosti izbranega oglasa -->
-                <Border Grid.Column="2" Padding="12" BorderBrush="#DDD" BorderThickness="1" CornerRadius="8">
+                <Border Grid.Column="2" Style="{StaticResource Card}" Margin="10">
                     <DockPanel LastChildFill="True">
-                        <TextBlock Text="Podrobnosti" FontSize="18" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="0,0,0,8"/>
+                        <TextBlock Text="Podrobnosti" Style="{StaticResource SectionTitle}" DockPanel.Dock="Top"/>
                         <StackPanel Orientation="Vertical">
-                            <StackPanel.Resources>
-                                <Style TargetType="FrameworkElement">
-                                    <Setter Property="Margin" Value="0,0,0,8"/>
-                                </Style>
-                            </StackPanel.Resources>
-
                             <Image x:Name="imgVozilo" Height="220" Stretch="Uniform" Source="Images/placeholder.jpg"/>
                             <TextBox x:Name="txtNaziv" FontSize="16" FontWeight="SemiBold" VerticalContentAlignment="Center"/>
                             <Label x:Name="lblCena" Content="Cena: -" />
