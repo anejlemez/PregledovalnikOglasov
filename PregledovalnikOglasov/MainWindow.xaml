@@ -68,13 +68,19 @@
                     </TextBlock>
                 </Grid>
 
+                <!-- Search button with remote icon -->
                 <Button x:Name="btnIšči"
                         Grid.Column="1"
-                        Content="Išči"
                         Width="100"
                         Height="32"
                         VerticalAlignment="Center"
-                        Click="BtnIsci_Click"/>
+                        Click="BtnIsci_Click">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Width="16" Height="16" Margin="0,0,6,0"
+                               Source="https://cdn1.iconfinder.com/data/icons/ionicons-sharp-vol-2/512/search-sharp-256.png"/>
+                        <TextBlock Text="Išči" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
             </Grid>
 
             <!-- FILTER -->
@@ -141,8 +147,24 @@
                         </StackPanel>
 
                         <Separator/>
-                        <Button Content="Filtriraj" Height="32" Click="BtnFiltriraj_Click"/>
-                        <Button Content="Ponastavi filtre" Height="32" Margin="0,4,0,0" Click="BtnPonastavi_Click"/>
+
+                        <!-- Filtriraj button with same remote icon -->
+                        <Button Height="32" Click="BtnFiltriraj_Click">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Width="16" Height="16" Margin="0,0,6,0"
+                                       Source="https://cdn1.iconfinder.com/data/icons/ionicons-sharp-vol-1/512/filter-sharp-256.png"/>
+                                <TextBlock Text="Filtriraj" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Ponastavi button with same remote icon -->
+                        <Button Height="32" Margin="0,4,0,0" Click="BtnPonastavi_Click">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Width="16" Height="16" Margin="0,0,6,0"
+                                       Source="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/reset--alt-256.png"/>
+                                <TextBlock Text="Ponastavi filtre" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </ScrollViewer>
             </Border>
